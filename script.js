@@ -534,32 +534,30 @@ if (catWrapper && catInner) {
     if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
 
     const cards = track.querySelectorAll('.project-card');
-    const perPage = 2;
-    const totalPages = Math.ceil(cards.length / perPage);
-    let currentPage = 0;
+    const gapPx = 20;
+    let perPage, totalPages, currentPage = 0;
 
-    // Generate dots
-    for (let i = 0; i < totalPages; i++) {
-        const dot = document.createElement('span');
-        dot.classList.add('carousel-dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToPage(i));
-        dotsContainer.appendChild(dot);
+    function getPerPage() {
+        return 1;
+    }
+
+    function buildDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToPage(i));
+            dotsContainer.appendChild(dot);
+        }
     }
 
     function goToPage(page) {
         currentPage = page;
 
-        // Calculate the offset: each card is 50% - 10px, gap is 20px
-        // So each page shifts by (cardWidth + gap) * perPage
-        // Using percentage: each card = 50%, gap = 20px
-        // translateX = -(page * 100%) accounting for gaps
-        const cardWidthPercent = 50; // each card is 50% of viewport - 10px
-        const gapPx = 20;
-
-        // For the transform, we shift by the full viewport width + gap per page
-        // Each "page" of 2 cards = 100% of viewport + 20px gap
-        const offset = page * (100); // percentage
+        // Each card is (100/perPage)% of the viewport width
+        // Each page shifts by 100% of the viewport + gap per page
+        const offset = page * 100; // percentage
         const gapOffset = page * gapPx; // pixels for gaps
 
         track.style.transform = `translateX(calc(-${offset}% - ${gapOffset}px))`;
@@ -575,6 +573,26 @@ if (catWrapper && catInner) {
         nextBtn.style.visibility = currentPage >= totalPages - 1 ? 'hidden' : 'visible';
     }
 
+    function setup() {
+        const newPerPage = getPerPage();
+        const newTotalPages = Math.ceil(cards.length / newPerPage);
+
+        // Only rebuild if layout changed
+        if (newPerPage !== perPage || newTotalPages !== totalPages) {
+            perPage = newPerPage;
+            totalPages = newTotalPages;
+
+            // Clamp current page
+            if (currentPage >= totalPages) {
+                currentPage = totalPages - 1;
+            }
+
+            buildDots();
+        }
+
+        goToPage(currentPage);
+    }
+
     prevBtn.addEventListener('click', () => {
         if (currentPage > 0) goToPage(currentPage - 1);
     });
@@ -583,6 +601,33 @@ if (catWrapper && catInner) {
         if (currentPage < totalPages - 1) goToPage(currentPage + 1);
     });
 
-    // Initialize visibility
-    goToPage(0);
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0 && currentPage < totalPages - 1) {
+                goToPage(currentPage + 1);
+            } else if (diff < 0 && currentPage > 0) {
+                goToPage(currentPage - 1);
+            }
+        }
+    }, { passive: true });
+
+    // Recalculate on resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(setup, 150);
+    });
+
+    // Initial setup
+    setup();
 })();
