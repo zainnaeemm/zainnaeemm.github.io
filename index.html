@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zain Naeem | Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Background Animation -->
+    <canvas id="bg-canvas"></canvas>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">ZN.</a>
+            <nav class="nav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#expertise" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+            </nav>
+            <button id="theme-lamp" class="theme-lamp" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                <i class="bi bi-moon-fill"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page 1: Home Section -->
+        <section id="home" class="hero section page-section">
+            <div class="container hero-content">
+                <p class="greeting reveal">Hi, my name is</p>
+                <h1 class="name reveal" id="hero-name">Zain Naeem.</h1>
+                <h2 class="subtitle reveal" id="hero-subtitle"
+                    data-text="I build things for the web &amp; analyze data."></h2>
+                <p class="hero-description reveal">
+                    I'm a Full Stack Developer & Data Analyst passionate about building exceptional digital experiences
+                    and deriving insights from complex datasets.
+                </p>
+                <div class="social-links reveal">
+                    <a href="https://github.com/zainnaeemm" target="_blank" aria-label="GitHub"><i
+                            class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/zain-naeem" target="_blank" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:zainnaeemm3@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+                <a href="#experience" class="scroll-down">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 2: Experience -->
+        <section id="experience" class="section page-section">
+            <div class="container section-centered">
+                <h2 class="section-title reveal"><span>01.</span> Experience</h2>
+                <div class="timeline">
+                    <!-- DeepCap Protocol -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content card glass">
+                            <h3 class="role">Full Stack Development Intern</h3>
+                            <h4 class="company">DeepCap Protocol <span>| Apr 2025 – Jun 2025</span></h4>
+                            <ul class="duties">
+                                <li>Integrated <strong>FlutterFlow</strong> UI with <strong>Supabase</strong> database
+                                    for smooth token/investment flow interactions.</li>
+                                <li>Deployed a secure, <strong>dockerized</strong>, <strong>Hyperledger Fabric</strong>
+                                    network using <strong>WSL2</strong>, reducing setup time by <strong>30%</strong>.
+                                </li>
+                                <li>Developed <strong>RESTful</strong> microservices with
+                                    <strong>Node.js/Express</strong> to enable reliable <strong>API</strong>
+                                    communication.
+                                </li>
+                                <li>Implemented ERC20-like smart contract with <strong>10+</strong> token actions using
+                                    <strong>JavaScript</strong>.
+                                </li>
+                                <li>Led <strong>documentation</strong>, <strong>testing</strong>, and development
+                                    <strong>environment setup</strong>.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tech Dimensions -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content card glass">
+                            <h3 class="role">Software Development Trainee</h3>
+                            <h4 class="company">Tech Dimensions <span>| Sep 2022 – Dec 2022</span></h4>
+                            <ul class="duties">
+                                <li>Implemented and maintained front-end components using <strong>React.js</strong>,
+                                    <strong>JavaScript</strong>, <strong>HTML</strong>, and <strong>CSS</strong>.
+                                </li>
+                                <li>Assisted in <strong>testing</strong> and <strong>debugging</strong> to improve
+                                    application functionality and stability.</li>
+                                <li>Used <strong>Git</strong> for version control and team collaboration.</li>
+                                <li>Followed <strong>SDLC</strong> practices, coding standards, and technical
+                                    documentation.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <!-- SolarTech -->
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content card glass">
+                            <h3 class="role">Marketing and Digital Operations Intern</h3>
+                            <h4 class="company">SolarTech <span>| Jun – Aug 2019</span></h4>
+                            <ul class="duties">
+                                <li>Supported day-to-day operations and assisted team members to ensure smooth
+                                    workflows.</li>
+                                <li>Maintained accurate and up-to-date content, demonstrating attention to detail and
+                                    quality.</li>
+                                <li>Assisted with customer email communication, ensuring timely and clear responses.
+                                </li>
+                                <li>Worked in a fast-paced environment, balancing multiple responsibilities efficiently.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Education -->
+        <section id="education" class="section page-section">
+            <div class="container section-centered">
+                <h2 class="section-title reveal"><span>02.</span> Education</h2>
+
+                <!-- Academic Degrees (Linked visually) -->
+                <div class="edu-grid academic-group">
+                    <div class="card glass reveal">
+                        <h3 class="degree">BBA, Business Information Technology</h3>
+                        <h4 class="university">LAB University of Applied Sciences<br><span>2023 – 2025</span></h4>
+                        <p class="gpa"><strong>GPA:</strong> 4.1</p>
+                        <p class="coursework"><strong>Highlighted Coursework:</strong> Software Development, Data
+                            Storages, Cybersecurity, Web Development, Business Processes, Data Analytics, Customer
+                            Relations and Marketing, Supply Chain Management, Scrum Basics</p>
+                    </div>
+
+                    <!-- Connective node linking Thesis to BBA (Optional CSS styling later) -->
+                    <div class="card glass reveal thesis-card">
+                        <h3 class="degree">Thesis</h3>
+                        <h4 class="university">Developer Experience (DX): Evaluating DX across Streamlit, Chainlit, and
+                            Gradio</h4>
+                        <p class="thesis"><strong>Focus:</strong> My thesis compared the Developer Experience (DX) of
+                            Streamlit, Gradio, and Chainlit for building chatbot interfaces. I developed identical
+                            chatbots in each framework and used code complexity metrics to objectively evaluate
+                            development effort and usability.</p>
+                    </div>
+                </div>
+
+                <!-- Animated Separator -->
+                <div class="cert-separator reveal">
+                    <span class="line line-left"></span>
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <span class="line line-right"></span>
+                </div>
+
+                <!-- Certifications Subsection -->
+                <div class="certifications-group">
+                    <h3 class="subsection-title reveal">Certifications</h3>
+                    <div class="card glass cert-card reveal">
+                        <div class="cert-header">
+                            <div class="cert-info">
+                                <h4 class="cert-name">Introduction to Cybersecurity</h4>
+                                <p class="cert-issuer">Cisco Networking Academy</p>
+                            </div>
+                            <div class="cert-date">Dec 2025</div>
+                        </div>
+
+                        <div class="cert-skills-container">
+                            <h5 class="acquired-skills-title">Acquired Skills:</h5>
+                            <div class="skill-tags cert-tags">
+                                <span class="skill-tag">Cybersecurity</span>
+                                <span class="skill-tag">Network Vulnerabilities</span>
+                                <span class="skill-tag">Penetration Testing</span>
+                                <span class="skill-tag">Nmap</span>
+                                <span class="skill-tag">Threat Detection</span>
+                                <span class="skill-tag">Privacy and Data Confidentiality</span>
+                                <span class="skill-tag">Malware Analysis</span>
+                                <span class="skill-tag">Identity and Access Management (IAM)</span>
+                                <span class="skill-tag">Cyber Best Practices</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Expertise -->
+        <section id="expertise" class="section page-section">
+            <div class="container section-centered">
+                <h2 class="section-title reveal"><span>03.</span> Skills</h2>
+                <div class="skills-container wrapper-card">
+                    <div class="skills-grid-blocks">
+                        <!-- Programming Languages -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">C#</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">TypeScript</span>
+                            </div>
+                        </div>
+
+                        <!-- Web Development -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fas fa-globe"></i> Web Development</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">React.js</span>
+                                <span class="skill-tag">Express.js</span>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">PHP</span>
+                            </div>
+                        </div>
+
+                        <!-- Data Analysis -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fas fa-chart-line"></i> Data Analysis</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">Numpy</span>
+                                <span class="skill-tag">EDA</span>
+                                <span class="skill-tag">Data Cleaning</span>
+                                <span class="skill-tag">Statistical Analysis</span>
+                                <span class="skill-tag">Hypothesis Testing</span>
+                                <span class="skill-tag">A/B Test Analysis</span>
+                                <span class="skill-tag">KPI Tracking</span>
+                            </div>
+                        </div>
+
+                        <!-- Visualization & Reporting -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fas fa-chart-pie"></i> Visualization & Reporting</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Tableau</span>
+                                <span class="skill-tag">Power BI</span>
+                                <span class="skill-tag">Matplotlib</span>
+                                <span class="skill-tag">Seaborn</span>
+                                <span class="skill-tag">Dashboard Design</span>
+                                <span class="skill-tag">Data Storytelling</span>
+                            </div>
+                        </div>
+
+                        <!-- Data Engineering -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fas fa-cogs"></i> Data Engineering</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Data Modeling</span>
+                                <span class="skill-tag">ETL Pipelines</span>
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">Data Quality Monitoring</span>
+                                <span class="skill-tag">Reproducible Data Workflows</span>
+                            </div>
+                        </div>
+
+                        <!-- Databases -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fas fa-database"></i> Databases</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">Supabase</span>
+                            </div>
+                        </div>
+
+                        <!-- Containerization -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fab fa-docker"></i> Containerization</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">VirtualBox</span>
+                            </div>
+                        </div>
+
+                        <!-- Security Standards -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fas fa-shield-alt"></i> Security Standards</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">ISO 27001</span>
+                                <span class="skill-tag">ISO 27017</span>
+                            </div>
+                        </div>
+
+                        <!-- Tools -->
+                        <div class="skill-category card glass reveal">
+                            <h3><i class="fas fa-tools"></i> Tools</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Nessus</span>
+                                <span class="skill-tag">Nmap</span>
+                                <span class="skill-tag">Microsoft 365</span>
+                            </div>
+                        </div>
+
+                        <!-- Core Skills -->
+                        <div class="skill-category card glass reveal full-width-category">
+                            <h3><i class="fas fa-lightbulb"></i> Core Skills</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">API Integration</span>
+                                <span class="skill-tag">REST</span>
+                                <span class="skill-tag">Agile &amp; Scrum</span>
+                                <span class="skill-tag">Git</span>
+                                <span class="skill-tag">GitHub</span>
+                                <span class="skill-tag">Data-Driven Decision Making</span>
+                                <span class="skill-tag">Business Insights Communication</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Projects -->
+        <section id="projects" class="section page-section">
+            <div class="container section-centered">
+                <h2 class="section-title reveal"><span>04.</span> Projects</h2>
+
+                <div class="carousel-wrapper reveal">
+                    <!-- Left Arrow (hidden on first page) -->
+                    <button class="carousel-btn carousel-btn-left" id="carousel-prev" aria-label="Previous projects"
+                        style="visibility: hidden;">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+
+                    <!-- Carousel viewport -->
+                    <div class="carousel-viewport">
+                        <div class="carousel-track" id="carousel-track">
+                            <!-- Project 1 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/Projects/tree/main/F1%20Analysis"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">F1 Insights & Visualization Engine</h3>
+                                <div class="project-description">
+                                    <p>Developed a sports analytics system to manage and visualize Formula 1 data using
+                                        Python and SQLite, enabling performance insights through SQL queries and
+                                        interactive visualizations.
+                                    </p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>Data Modeling</li>
+                                    <li>SQLite</li>
+                                    <li>Pandas</li>
+                                    <li>Python</li>
+                                    <li>Data Visualization</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 2 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/Projects/tree/main/Data%20Analysis"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">School Funding Impact Analysis</h3>
+                                <div class="project-description">
+                                    <p>Evaluated how additional textbook funding affects student performance using
+                                        statistical and causal analysis while controlling for socioeconomic factors.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>Python</li>
+                                    <li>Pandas</li>
+                                    <li>Jupyter Notebook</li>
+                                    <li>Scikit-learn</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 3 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/Projects/tree/main/Data%20Visualizations%202"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Customer Data Analysis & Visualization</h3>
+                                <div class="project-description">
+                                    <p>Performed EDA and data cleaning on retail customer data to analyze demographics
+                                        and spending behavior.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>Python</li>
+                                    <li>Pandas</li>
+                                    <li>Matplotlib</li>
+                                    <li>Seaborn</li>
+                                    <li>Data Cleaning</li>
+                                    <li>EDA</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 4 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/Projects/tree/main/E-commerce"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">E-Commerce Sales Data Analysis</h3>
+                                <div class="project-description">
+                                    <p>Analyzed e-commerce sales data to evaluate performance, customer purchasing
+                                        behavior, and product trends using EDA and visualization techniques.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>Python</li>
+                                    <li>NumPy</li>
+                                    <li>Matplotlib</li>
+                                    <li>Seaborn</li>
+                                    <li>EDA</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 5 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/Projects/tree/main/GBP-USD"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">GBP/USD Exchange Rate Prediction</h3>
+                                <div class="project-description">
+                                    <p>Built a machine learning model to forecast GBP/USD exchange rate movements using
+                                        regression and clustering techniques, with structured preprocessing and
+                                        performance evaluation.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>Python</li>
+                                    <li>Pandas</li>
+                                    <li>Scikit-learn</li>
+                                    <li>Feature Engineering</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 6 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/Projects/tree/main/Lora%20VS%20Wifi"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Analytical Comparison of LoRa and WiFi Signal Performance</h3>
+                                <div class="project-description">
+                                    <p>Performed a comparative analysis of LoRa and WiFi signal performance to evaluate
+                                        coverage, reliability, and signal behavior across different conditions.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>Python</li>
+                                    <li>Data Analysis</li>
+                                    <li>Statistical Analysis</li>
+                                    <li>Visualization</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 7 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/Movie-World" target="_blank"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Movie World</h3>
+                                <div class="project-description">
+                                    <p>Developed a full-stack movie discovery application that allows users to browse,
+                                        search, and explore movie details using external movie APIs. Built a dynamic
+                                        React frontend for interactive UI rendering and integrated a Node.js backend to
+                                        handle API requests, data processing, and server-side logic.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>React</li>
+                                    <li>Node.js</li>
+                                    <li>JavaScript</li>
+                                    <li>API Integration</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 8 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/Company-Dashboard-Project"
+                                            target="_blank" aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Company Dashboard</h3>
+                                <div class="project-description">
+                                    <p>Developed a role-based access control (RBAC) system for internal task and
+                                        workflow management. Administrators can assign tasks, monitor progress, review
+                                        uploaded media, and provide structured feedback.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>React</li>
+                                    <li>TypeScript</li>
+                                    <li>SQL</li>
+                                    <li>MongoDB</li>
+                                    <li>Supabase</li>
+                                    <li>REST APIs</li>
+                                    <li>RBAC</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 9 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/tictactoe" target="_blank"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Tic-Tac-Toe Game</h3>
+                                <div class="project-description">
+                                    <p>A simple tic-tac-toe game that can be set up between two players and updates 1:1
+                                        in real time.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>JavaScript</li>
+                                    <li>Real-time</li>
+                                </ul>
+                            </div>
+
+                            <!-- Project 10 -->
+                            <div class="project-card card glass">
+                                <div class="project-header">
+                                    <i class="far fa-folder-open folder-icon"></i>
+                                    <div class="project-links">
+                                        <a href="https://github.com/zainnaeemm/notesapp" target="_blank"
+                                            aria-label="GitHub Link"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                                <h3 class="project-title">Notes App</h3>
+                                <div class="project-description">
+                                    <p>Simple, functional note-taking app in React.</p>
+                                </div>
+                                <ul class="project-tech-list">
+                                    <li>React</li>
+                                    <li>JavaScript</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Arrow -->
+                    <button class="carousel-btn carousel-btn-right" id="carousel-next" aria-label="Next projects">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Dot indicators -->
+                <div class="carousel-dots" id="carousel-dots"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Designed & Built by Zain Naeem</p>
+            <div class="footer-socials">
+                <a href="https://github.com/zainnaeemm" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/zain-naeem" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Cat -->
+    <div id="interactive-cat-wrapper" title="Catch me!">
+        <div id="interactive-cat-inner">
+            <svg class="cat-svg" viewBox="0 0 100 100" width="100%" height="100%" style="overflow: visible;">
+                <!-- White body base (Theme matched) -->
+                <path d="M 20 100 Q 20 40 50 40 Q 80 40 80 100 Z" fill="var(--text-main)" />
+
+                <!-- Ears -->
+                <polygon points="25,45 15,15 40,35" fill="var(--text-main)" stroke="var(--bg-dark)" stroke-width="1.5"
+                    stroke-linejoin="round" />
+                <polygon points="75,45 85,15 60,35" fill="var(--text-main)" stroke="var(--bg-dark)" stroke-width="1.5"
+                    stroke-linejoin="round" />
+
+                <!-- Ear inners (Fixed pink color) -->
+                <polygon points="25,40 18,20 37,33" fill="#ffcccb" />
+                <polygon points="75,40 82,20 63,33" fill="#ffcccb" />
+
+                <!-- Body outline for definition -->
+                <path d="M 20 100 Q 20 40 50 40 Q 80 40 80 100 Z" fill="none" stroke="var(--bg-dark)"
+                    stroke-width="2" />
+
+                <!-- Face features -->
+                <g class="cat-eyes">
+                    <circle cx="35" cy="55" r="5" fill="var(--bg-dark)" />
+                    <circle cx="65" cy="55" r="5" fill="var(--bg-dark)" />
+                    <!-- Eye glints -->
+                    <circle cx="33" cy="53" r="1.5" fill="var(--text-main)" />
+                    <circle cx="63" cy="53" r="1.5" fill="var(--text-main)" />
+                </g>
+
+                <!-- Nose / Mouth -->
+                <path d="M 45 65 Q 50 68 55 65" fill="none" stroke="var(--bg-dark)" stroke-width="2"
+                    stroke-linecap="round" />
+                <polygon points="48,62 52,62 50,65" fill="#ffcccb" />
+
+                <!-- Whiskers -->
+                <path class="whiskers" d="M 30 65 L 10 60 M 30 70 L 10 70 M 30 75 L 10 80" stroke="var(--bg-dark)"
+                    stroke-width="1" stroke-linecap="round" />
+                <path class="whiskers" d="M 70 65 L 90 60 M 70 70 L 90 70 M 70 75 L 90 80" stroke="var(--bg-dark)"
+                    stroke-width="1" stroke-linecap="round" />
+
+                <!-- Paws gripping edge -->
+                <g transform="translate(0, 10)">
+                    <ellipse cx="28" cy="88" rx="8" ry="12" fill="var(--text-main)" stroke="var(--bg-dark)"
+                        stroke-width="2" />
+                    <ellipse cx="72" cy="88" rx="8" ry="12" fill="var(--text-main)" stroke="var(--bg-dark)"
+                        stroke-width="2" />
+                    <!-- Toe beans lines -->
+                    <line x1="25" y1="92" x2="25" y2="98" stroke="var(--bg-dark)" stroke-width="1" />
+                    <line x1="31" y1="92" x2="31" y2="98" stroke="var(--bg-dark)" stroke-width="1" />
+                    <line x1="69" y1="92" x2="69" y2="98" stroke="var(--bg-dark)" stroke-width="1" />
+                    <line x1="75" y1="92" x2="75" y2="98" stroke="var(--bg-dark)" stroke-width="1" />
+                </g>
+            </svg>
+
+            <!-- The Bee -->
+            <svg class="bee" viewBox="0 0 50 50"
+                style="position: absolute; top: -10px; right: -20px; width: 40px; height: 40px; transform-origin: center;">
+                <!-- Wings container for fluttering -->
+                <g class="bee-wings">
+                    <ellipse cx="15" cy="15" rx="8" ry="5" fill="var(--text-main)" opacity="0.8"
+                        transform="rotate(-30 15 15)" />
+                    <ellipse cx="25" cy="10" rx="6" ry="4" fill="var(--text-main)" opacity="0.8"
+                        transform="rotate(-60 25 10)" />
+                </g>
+                <!-- Bee Body -->
+                <ellipse cx="25" cy="25" rx="14" ry="10" fill="#FFD700" stroke="var(--bg-dark)" stroke-width="2" />
+                <!-- Stripes -->
+                <path d="M 18 16 Q 20 25 18 34" fill="none" stroke="var(--bg-dark)" stroke-width="3" />
+                <path d="M 25 15 Q 27 25 25 35" fill="none" stroke="var(--bg-dark)" stroke-width="4" />
+                <path d="M 32 17 Q 34 25 32 33" fill="none" stroke="var(--bg-dark)" stroke-width="2" />
+                <!-- Stinger -->
+                <polygon points="38,20 46,25 38,30" fill="var(--bg-dark)" />
+                <!-- Eye -->
+                <circle cx="16" cy="22" r="2" fill="var(--bg-dark)" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>

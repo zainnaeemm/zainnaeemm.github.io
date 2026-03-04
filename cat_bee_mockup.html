@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG Cat & Bee Test</title>
+    <style>
+        body {
+            background-color: #1a1c20;
+            /* Dark theme to match portfolio */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .cat-container {
+            width: 200px;
+            height: 200px;
+            position: relative;
+        }
+
+        /* Base Cat SVG */
+        .cat-svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        /* Animations */
+        @keyframes pokeHead {
+            0% {
+                transform: translateY(100px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flyingBee {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(-20px, -10px) rotate(-15deg);
+            }
+
+            50% {
+                transform: translate(-10px, -20px) rotate(0deg);
+            }
+
+            75% {
+                transform: translate(10px, -10px) rotate(15deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+
+        @keyframes blink {
+
+            0%,
+            96%,
+            98%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            97%,
+            99% {
+                transform: scaleY(0.1);
+            }
+        }
+
+        .cat-svg {
+            animation: pokeHead 2s ease-out forwards;
+        }
+
+        .bee {
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            width: 40px;
+            height: 40px;
+            animation: flyingBee 4s infinite ease-in-out;
+            transform-origin: center;
+        }
+
+        .cat-eyes {
+            transform-origin: center;
+            animation: blink 4s infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cat-container">
+        <!-- The Cat (Stylized like the wallpaper engine cat) -->
+        <svg class="cat-svg" viewBox="0 0 100 100">
+            <!-- White body -->
+            <path d="M 20 100 Q 20 40 50 40 Q 80 40 80 100 Z" fill="#F3F4F6" />
+
+            <!-- Ears -->
+            <polygon points="25,45 15,15 40,35" fill="#F3F4F6" stroke="#1F2937" stroke-width="1.5"
+                stroke-linejoin="round" />
+            <polygon points="75,45 85,15 60,35" fill="#F3F4F6" stroke="#1F2937" stroke-width="1.5"
+                stroke-linejoin="round" />
+
+            <!-- Ear inners -->
+            <polygon points="25,40 18,20 37,33" fill="#ffcccb" />
+            <polygon points="75,40 82,20 63,33" fill="#ffcccb" />
+
+            <!-- Body outline for definition -->
+            <path d="M 20 100 Q 20 40 50 40 Q 80 40 80 100 Z" fill="none" stroke="#1F2937" stroke-width="2" />
+
+            <!-- Face features -->
+            <g class="cat-eyes">
+                <circle cx="35" cy="55" r="5" fill="#1F2937" />
+                <circle cx="65" cy="55" r="5" fill="#1F2937" />
+                <!-- Eye glints -->
+                <circle cx="33" cy="53" r="1.5" fill="white" />
+                <circle cx="63" cy="53" r="1.5" fill="white" />
+            </g>
+
+            <path d="M 45 65 Q 50 68 55 65" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" />
+            <polygon points="48,62 52,62 50,65" fill="#ffcccb" />
+
+            <path class="whiskers" d="M 30 65 L 10 60 M 30 70 L 10 70 M 30 75 L 10 80" stroke="#1F2937" stroke-width="1"
+                stroke-linecap="round" />
+            <path class="whiskers" d="M 70 65 L 90 60 M 70 70 L 90 70 M 70 75 L 90 80" stroke="#1F2937" stroke-width="1"
+                stroke-linecap="round" />
+
+            <!-- Paws -->
+            <g transform="translate(0, 10)">
+                <ellipse cx="28" cy="88" rx="8" ry="12" fill="#F3F4F6" stroke="#1F2937" stroke-width="2" />
+                <ellipse cx="72" cy="88" rx="8" ry="12" fill="#F3F4F6" stroke="#1F2937" stroke-width="2" />
+                <!-- Toe beans -->
+                <line x1="25" y1="92" x2="25" y2="98" stroke="#1F2937" stroke-width="1" />
+                <line x1="31" y1="92" x2="31" y2="98" stroke="#1F2937" stroke-width="1" />
+                <line x1="69" y1="92" x2="69" y2="98" stroke="#1F2937" stroke-width="1" />
+                <line x1="75" y1="92" x2="75" y2="98" stroke="#1F2937" stroke-width="1" />
+            </g>
+        </svg>
+
+        <!-- The Bee -->
+        <svg class="bee" viewBox="0 0 50 50">
+            <!-- Wings container for fluttering -->
+            <g>
+                <ellipse cx="15" cy="15" rx="8" ry="5" fill="#ffffff" opacity="0.8" transform="rotate(-30 15 15)" />
+                <ellipse cx="25" cy="10" rx="6" ry="4" fill="#ffffff" opacity="0.8" transform="rotate(-60 25 10)" />
+            </g>
+            <!-- Bee Body -->
+            <ellipse cx="25" cy="25" rx="14" ry="10" fill="#FFD700" stroke="#1F2937" stroke-width="2" />
+            <!-- Stripes -->
+            <path d="M 18 16 Q 20 25 18 34" fill="none" stroke="#1F2937" stroke-width="3" />
+            <path d="M 25 15 Q 27 25 25 35" fill="none" stroke="#1F2937" stroke-width="4" />
+            <path d="M 32 17 Q 34 25 32 33" fill="none" stroke="#1F2937" stroke-width="2" />
+            <!-- Stinger -->
+            <polygon points="38,20 46,25 38,30" fill="#1F2937" />
+            <!-- Eye -->
+            <circle cx="16" cy="22" r="2" fill="#1F2937" />
+        </svg>
+    </div>
+
+</body>
+
+</html>
