@@ -510,6 +510,20 @@ ul {
     color: var(--text-main);
 }
 
+.thesis-link {
+    color: var(--accent);
+    font-size: 0.85em;
+    margin-left: 8px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.thesis-link:hover {
+    color: var(--accent-secondary);
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 6px var(--accent));
+}
+
 /* Certifications Separator */
 .cert-separator {
     display: flex;
