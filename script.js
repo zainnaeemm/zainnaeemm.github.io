@@ -61,6 +61,81 @@
     // ---------------------------------------------------------
     // THEME MANAGEMENT
     // ---------------------------------------------------------
+
+    // Vanta.js colour config per theme.
+    const VANTA_THEMES = {
+        dark: {
+            backgroundColor: 0x0a0e17,   // --bg-dark
+            color: 0x7c3aed,   // violet  (complements --accent #A78BFA)
+            color2: 0x4c1d95,   // deep violet
+        },
+        light: {
+            backgroundColor: 0xb8c5da,   // --bg-dark (light)
+            color: 0x2f4f8f,   // --accent
+            color2: 0x2f4f8f,   // softer complementary blue
+        },
+    };
+
+    let vantaEffect = null;
+
+    /** Destroy any active Vanta instance. */
+    function destroyVanta() {
+        if (vantaEffect) {
+            vantaEffect.destroy();
+            vantaEffect = null;
+        }
+    }
+
+    /** Create the Vanta instance. */
+    function initVanta(theme) {
+        destroyVanta();
+
+        if (typeof VANTA === 'undefined') return;
+
+        const el = document.getElementById('vanta-bg');
+        if (!el) return;
+
+        const cfg = VANTA_THEMES[theme] || VANTA_THEMES.light;
+
+        // Briefly hide container to mask the re-init flash
+        el.style.transition = 'opacity 0.2s ease';
+        el.style.opacity = '0';
+
+        setTimeout(() => {
+            vantaEffect = VANTA.DOTS({
+                el: el,
+                THREE: typeof THREE !== 'undefined' ? THREE : undefined,
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                size: 2.30,       // <-- You can tweak point size here (default ~4)
+                spacing: 20.00,   // <-- You can tweak point spacing here (default ~40)
+                color: cfg.color,
+                color2: cfg.color2,
+                backgroundColor: cfg.backgroundColor,
+                showLines: false,
+            });
+
+            // Fade back in
+            el.style.opacity = '1';
+        }, 150); // slight delay to allow WebGL context to clear
+    }
+
+    /**
+     * Transition Vanta colours to the target theme.
+     * `setOptions` is buggy for colour updates in VANTA.DOTS. We destroy and recreate.
+     */
+    function transitionVanta(theme) {
+        initVanta(theme);
+    }
+
+    // ---------------------------------------------------------
+    // THEME GETTERS / SETTERS
+    // ---------------------------------------------------------
     function getTheme() {
         return localStorage.getItem('portfolio-theme') || 'light';
     }
@@ -68,6 +143,9 @@
     function setTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('portfolio-theme', theme);
+
+        // Animate Vanta colours (no-ops gracefully if Vanta isn't ready yet)
+        transitionVanta(theme);
 
         // Set gradient target colors (will smoothly transition)
         const palette = theme === 'dark' ? PALETTES.dark : PALETTES.light;
@@ -90,7 +168,6 @@
     }
 
     function updateHeaderShadow(theme) {
-        // Store the theme for the scroll handler
         window._portfolioTheme = theme;
     }
 
@@ -100,9 +177,14 @@
         setTheme(next);
     }
 
-    // Initialize theme immediately (doesn't need canvas)
+    // Apply theme CSS vars immediately (icon swap is a no-op since
+    // the button isn't in the DOM yet, but data-theme IS set so
+    // the correct palette renders before first paint).
     const savedTheme = getTheme();
-    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    localStorage.setItem('portfolio-theme', savedTheme);
+    window._portfolioTheme = savedTheme;
+    // Vanta init is deferred to boot() when DOM + CDN scripts are ready.
 
     // ---------------------------------------------------------
     // RESIZE
@@ -236,6 +318,9 @@
         if (!ctx) return;
         animationStarted = true;
 
+        // Initialize Vanta first so it exists when we trigger setTheme
+        initVanta(getTheme());
+
         // Events
         window.addEventListener('mousemove', (e) => {
             mouse.x = e.clientX / window.innerWidth;
@@ -275,7 +360,10 @@
             lampBtn.addEventListener('click', toggleTheme);
         }
 
-        // Start
+        // Full setup now that DOM is completely loaded
+        setTheme(getTheme());
+
+        // Start animation loop
         resize();
         requestAnimationFrame(animate);
     }
@@ -630,4 +718,76 @@ if (catWrapper && catInner) {
 
     // Initial setup
     setup();
+})();
+
+// =========================================
+// Hero to Experience Scroll Snap
+// =========================================
+(function initHeroScrollSnap() {
+    let isSnapping = false;
+    let touchStartY = 0;
+
+    function handleScrollDown(e) {
+        // Only intercept if we are at the very top of the page
+        if (window.scrollY > 10) return;
+
+        // Determine if the user is scrolling visually DOWN the page
+        let isScrollDown = false;
+
+        if (e.type === 'wheel') {
+            if (e.deltaY > 0) isScrollDown = true;
+        } else if (e.type === 'touchmove') {
+            const currentY = e.touches[0].clientY;
+            if (touchStartY - currentY > 10) isScrollDown = true;
+        }
+
+        if (isScrollDown && !isSnapping) {
+            e.preventDefault();
+            isSnapping = true;
+
+            const expSection = document.getElementById('experience');
+            if (expSection) {
+                const headerOffset = 80;
+                const startY = window.pageYOffset;
+                const elementY = expSection.getBoundingClientRect().top;
+                const targetY = elementY + startY - headerOffset;
+                const distance = targetY - startY;
+                const duration = 1200; // 1.2 seconds for a cinematic, soft glide
+                let startTime = null;
+
+                // Easing function for smooth acceleration and deceleration (easeInOutCubic)
+                function easeInOutCubic(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+
+                function animation(currentTime) {
+                    if (startTime === null) startTime = currentTime;
+                    const timeElapsed = currentTime - startTime;
+                    const progress = Math.min(timeElapsed / duration, 1);
+
+                    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    } else {
+                        // Release lock exactly when the precise animation fully stops
+                        isSnapping = false;
+                    }
+                }
+
+                requestAnimationFrame(animation);
+            } else {
+                setTimeout(() => { isSnapping = false; }, 1000);
+            }
+        }
+    }
+
+    // Use passive: false so we can call preventDefault()
+    window.addEventListener('wheel', handleScrollDown, { passive: false });
+
+    window.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', handleScrollDown, { passive: false });
 })();

@@ -4,7 +4,7 @@
 */
 :root {
     /* Colors — Periwinkle Palette */
-    --bg-dark: #cad3e3;
+    --bg-dark: #b8c5da;
     /* Cool grey-blue — page bg */
     --bg-charcoal: #e2eafc99;
     /* Lavender — card bg */
@@ -43,6 +43,8 @@ html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--bg-dark);
+    background-color: var(--bg-dark);
+    /* Color the overscroll area */
 }
 
 body {
@@ -52,6 +54,9 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Typography Selection */
@@ -166,8 +171,12 @@ ul {
     box-shadow: 0 20px 40px -10px rgba(47, 79, 143, 0.15);
 }
 
-/* Background Animation */
+/* Background Animation (Gradient canvas replaced by Vanta) */
 #bg-canvas {
+    display: none;
+}
+
+#vanta-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -175,6 +184,8 @@ ul {
     height: 100%;
     z-index: 0;
     pointer-events: none;
+    display: block;
+    /* Vanta is now the unified background for both themes */
 }
 
 /* Header & Nav */
@@ -183,7 +194,7 @@ ul {
     top: 0;
     width: 100%;
     height: 80px;
-    background: rgba(202, 211, 227, 0.85);
+    background: rgba(184, 197, 218, 0.85);
     backdrop-filter: blur(10px);
     z-index: 100;
     transition: var(--transition);
@@ -324,6 +335,7 @@ ul {
     max-width: 540px;
     font-size: 1.1rem;
     margin-bottom: 50px;
+    color: var(--text-main);
 }
 
 .social-links {
@@ -754,6 +766,8 @@ ul {
     justify-content: center;
     transition: all 0.3s ease;
     flex-shrink: 0;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .carousel-btn:hover {
@@ -886,28 +900,163 @@ ul {
     border-color: rgba(47, 79, 143, 0.3);
 }
 
+/* Project Carousel Navigation Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: rgba(20, 20, 20, 0.15);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .carousel-dots {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--text-muted);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dots .dot:hover {
+    opacity: 0.8;
+}
+
+.carousel-dots .dot.active {
+    background-color: var(--accent);
+    opacity: 1;
+    transform: scale(1.2);
+    box-shadow: 0 0 8px var(--accent);
+}
+
+main {
+    flex: 1 0 auto;
+}
+
 /* Footer */
 .footer {
+    width: 100%;
+    margin: 0;
     padding: 30px 0;
     text-align: center;
     font-family: var(--font-mono);
     font-size: 0.85rem;
+    position: relative;
+    z-index: 10;
+    background: rgba(202, 211, 227, 0.85);
+    /* Acrylic light pattern */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .footer {
+    background: rgba(17, 24, 39, 0.85);
+    /* Acrylic dark theme */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer-left p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.footer-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.scroll-top-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--accent);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    text-decoration: none;
+}
+
+[data-theme="light"] .scroll-top-btn {
+    background: rgba(47, 79, 143, 0.1);
+    border-color: rgba(47, 79, 143, 0.2);
+}
+
+.scroll-top-btn:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(167, 139, 250, 0.4);
+    border-color: transparent;
+}
+
+[data-theme="light"] .scroll-top-btn:hover {
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(47, 79, 143, 0.3);
 }
 
 .footer-socials {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .footer-socials a {
     color: var(--text-muted);
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .footer-socials a:hover {
     color: var(--accent);
+    transform: translateY(-3px);
 }
 
 /* Scroll Animations (Intersection Observer will add "active" class) */
@@ -1008,6 +1157,10 @@ ul {
     .page-section {
         padding: 80px 0;
         min-height: auto;
+    }
+
+    .hero {
+        min-height: 100vh;
     }
 
     .nav {
@@ -1147,7 +1300,7 @@ body,
    Dark Theme Overrides
    ========================================= */
 [data-theme="dark"] {
-    --bg-dark: #111827;
+    --bg-dark: #0a0e17;
     --bg-charcoal: #1F2937;
     --bg-slate: #374151;
     --accent: #A78BFA;
@@ -1159,7 +1312,7 @@ body,
 }
 
 [data-theme="dark"] .header {
-    background: rgba(17, 24, 39, 0.85);
+    background: rgba(10, 14, 23, 0.85);
 }
 
 [data-theme="dark"] .card.glass:hover {
@@ -1173,6 +1326,10 @@ body,
 
 [data-theme="dark"] .wrapper-card {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .timeline-item:hover .timeline-dot {
+    box-shadow: 0 0 15px var(--accent);
 }
 
 [data-theme="dark"] .timeline-item:hover .timeline-dot {
