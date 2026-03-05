@@ -248,6 +248,36 @@ ul {
     width: 100%;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-socials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-social-link {
+    color: var(--text-main);
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav-social-link:hover {
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* Hide socials on extremely small phones so logo and lamp don't get squished */
+@media (max-width: 480px) {
+    .nav-socials {
+        display: none;
+    }
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -336,6 +366,7 @@ ul {
     font-size: 1.1rem;
     margin-bottom: 50px;
     color: var(--text-main);
+    font-weight: 500;
 }
 
 .social-links {
@@ -346,7 +377,7 @@ ul {
 
 .social-links a {
     color: var(--text-main);
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
     display: inline-block;
 }
@@ -952,10 +983,11 @@ main {
 .footer {
     width: 100%;
     margin: 0;
-    padding: 30px 0;
+    padding: 20px 0;
     text-align: center;
     font-family: var(--font-mono);
     font-size: 0.85rem;
+    font-weight: 700;
     position: relative;
     z-index: 10;
     background: rgba(202, 211, 227, 0.85);
@@ -966,7 +998,7 @@ main {
 }
 
 [data-theme="dark"] .footer {
-    background: rgba(17, 24, 39, 0.85);
+    background: #0a0e17;
     /* Acrylic dark theme */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -1424,4 +1456,225 @@ body,
 #interactive-cat-inner:hover .cat-eyes {
     transform: scale(1.2);
     /* Wide eyes when about to be caught! */
+}
+
+/* =========================================
+   Contact Section & Hero Button
+   ========================================= */
+
+/* Hero Button */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background-color: var(--text-main);
+    color: var(--bg-dark);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background-color: var(--accent);
+    color: #fff;
+}
+
+[data-theme="dark"] .btn-primary {
+    background-color: #f3f4f6;
+    color: #0a0e17;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(167, 139, 250, 0.2);
+}
+
+.hero-buttons {
+    margin-top: 10px;
+}
+
+/* =========================================
+   Terminal Contact Section
+   ========================================= */
+.terminal-card {
+    width: 100%;
+    max-width: 790px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0;
+    font-family: var(--font-mono);
+    text-align: left;
+    border: 1px solid var(--glass-border);
+    /* Heavily Frosted Glass to block out Vanta dots while keeping it aesthetic */
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+[data-theme="dark"] .terminal-card {
+    background: rgba(15, 20, 30, 0.85);
+    /* Deep opaque charcoal */
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-header {
+    background: rgba(0, 0, 0, 0.1);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+[data-theme="dark"] .terminal-header {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.terminal-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.terminal-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.close {
+    background-color: #ff5f56;
+}
+
+.dot.minimize {
+    background-color: #ffbd2e;
+}
+
+.dot.maximize {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    flex-grow: 1;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding-right: 60px;
+    /* Offset for the dots to keep it perfectly centered */
+}
+
+.terminal-body {
+    padding: 24px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+}
+
+.terminal-line {
+    margin-bottom: 12px;
+}
+
+.prompt {
+    color: var(--accent);
+    margin-right: 10px;
+}
+
+.command {
+    color: var(--text-main);
+}
+
+.terminal-output {
+    padding-left: 20px;
+    margin-bottom: 20px;
+    border-left: 2px solid rgba(167, 139, 250, 0.3);
+    color: var(--text-main);
+}
+
+.json-key {
+    color: #0ea5e9;
+    /* Light blue */
+}
+
+.json-string {
+    color: #10b981;
+    /* Emerald green */
+}
+
+[data-theme="dark"] .json-key {
+    color: #38bdf8;
+}
+
+[data-theme="dark"] .json-string {
+    color: #34d399;
+}
+
+.terminal-link {
+    text-decoration: none;
+    position: relative;
+    transition: filter 0.3s ease;
+}
+
+.terminal-link:hover {
+    filter: brightness(1.3);
+    text-decoration: underline;
+}
+
+.cursor {
+    animation: blink 1s step-end infinite;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Copy Toast Notification */
+.terminal-toast {
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #34d399;
+    /* Emerald green */
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 10;
+}
+
+[data-theme="light"] body .terminal-toast {
+    /* Fallback for exact readability if they toggle theme */
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #10b981;
+}
+
+.terminal-toast.show {
+    opacity: 1;
+    transform: translateY(0);
 }

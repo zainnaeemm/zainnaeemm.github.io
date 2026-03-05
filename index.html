@@ -35,10 +35,19 @@
                 <a href="#education" class="nav-link">Education</a>
                 <a href="#expertise" class="nav-link">Skills</a>
                 <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </nav>
-            <button id="theme-lamp" class="theme-lamp" aria-label="Toggle dark mode" title="Toggle dark/light mode">
-                <i class="bi bi-moon-fill"></i>
-            </button>
+            <div class="nav-right">
+                <div class="nav-socials">
+                    <a href="https://linkedin.com/in/zain-naeem" target="_blank" aria-label="LinkedIn"
+                        class="nav-social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/zainnaeemm" target="_blank" aria-label="GitHub"
+                        class="nav-social-link"><i class="fab fa-github"></i></a>
+                </div>
+                <button id="theme-lamp" class="theme-lamp" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -54,12 +63,10 @@
                     I create full stack solutions and extract meaning from data, with a growing focus on cybersecurity
                     and secure design.
                 </p>
-                <div class="social-links reveal">
-                    <a href="https://github.com/zainnaeemm" target="_blank" aria-label="GitHub"><i
-                            class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/zain-naeem" target="_blank" aria-label="LinkedIn"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a href="mailto:zainnaeemm3@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <div class="hero-buttons reveal">
+                    <button id="hero-contact-btn" class="btn-primary">
+                        Say Hello <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
             </div>
@@ -585,6 +592,54 @@
 
                 <!-- Dot indicators -->
                 <div class="carousel-dots" id="carousel-dots"></div>
+            </div>
+        </section>
+
+        <!-- Section 5: Contact -->
+        <section id="contact" class="section page-section">
+            <div class="container section-centered">
+                <h2 class="section-title reveal"><span>05.</span> Contact</h2>
+
+                <div class="terminal-card glass reveal">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot close"></span>
+                            <span class="dot minimize"></span>
+                            <span class="dot maximize"></span>
+                        </div>
+                        <div class="terminal-title">zain_naeem ~ bash</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">visitor@portfolio:~$</span>
+                            <span class="command">cat contact_info.json</span>
+                        </div>
+                        <div class="terminal-output">
+                            {<br>
+                            &nbsp;&nbsp;<span class="json-key">"status"</span>: <span class="json-string">"Open to
+                                opportunities and collaborations"</span>,<br>
+                            &nbsp;&nbsp;<span class="json-key">"email"</span>: <a href="#" id="copy-email"
+                                data-email="zainnaeemm3@gmail.com"
+                                class="json-string terminal-link">"zainnaeemm3@gmail.com"</a>,<br>
+                            &nbsp;&nbsp;<span class="json-key">"socials"</span>: {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"LinkedIn"</span>: <a
+                                href="https://linkedin.com/in/zain-naeem" target="_blank"
+                                class="json-string terminal-link">"zain-naeem"</a>,<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"GitHub"</span>: <a
+                                href="https://github.com/zainnaeemm" target="_blank"
+                                class="json-string terminal-link">"zainnaeemm"</a><br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
+                        <div class="terminal-line">
+                            <span class="prompt">visitor@portfolio:~$</span>
+                            <span class="cursor">_</span>
+                        </div>
+
+                        <!-- Copy Toast Notification -->
+                        <div id="copy-toast" class="terminal-toast">> copied_to_clipboard</div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

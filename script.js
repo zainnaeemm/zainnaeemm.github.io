@@ -66,12 +66,12 @@
     const VANTA_THEMES = {
         dark: {
             backgroundColor: 0x0a0e17,   // --bg-dark
-            color: 0x7c3aed,   // violet  (complements --accent #A78BFA)
+            color: 0x755f99,   // violet  (complements --accent #A78BFA)
             color2: 0x4c1d95,   // deep violet
         },
         light: {
             backgroundColor: 0xb8c5da,   // --bg-dark (light)
-            color: 0x2f4f8f,   // --accent
+            color: 0x405582,   // --accent
             color2: 0x2f4f8f,   // softer complementary blue
         },
     };
@@ -790,4 +790,77 @@ if (catWrapper && catInner) {
     }, { passive: true });
 
     window.addEventListener('touchmove', handleScrollDown, { passive: false });
+})();
+
+// =========================================
+// Hero Contact Button Smooth Scroll
+// =========================================
+(function initContactScroll() {
+    const contactBtn = document.getElementById('hero-contact-btn');
+    if (!contactBtn) return;
+
+    contactBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const contactSection = document.getElementById('contact');
+        if (!contactSection) return;
+
+        const headerOffset = 80;
+        const startY = window.pageYOffset;
+        const elementY = contactSection.getBoundingClientRect().top;
+        const targetY = elementY + startY - headerOffset;
+        const distance = targetY - startY;
+        const duration = 1200; // 1.2 seconds for cinematic glide
+        let startTime = null;
+
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+
+            window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+
+        requestAnimationFrame(animation);
+    });
+})();
+
+// =========================================
+// Terminal Email Copy to Clipboard
+// =========================================
+(function initEmailCopy() {
+    const copyEmailBtn = document.getElementById('copy-email');
+    const copyToast = document.getElementById('copy-toast');
+
+    if (!copyEmailBtn || !copyToast) return;
+
+    copyEmailBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        const emailToCopy = copyEmailBtn.getAttribute('data-email');
+        if (!emailToCopy) return;
+
+        try {
+            await navigator.clipboard.writeText(emailToCopy);
+
+            // Show toast
+            copyToast.classList.add('show');
+
+            // Hide toast after 2 seconds
+            setTimeout(() => {
+                copyToast.classList.remove('show');
+            }, 2000);
+
+        } catch (err) {
+            console.error('Failed to copy email to clipboard', err);
+        }
+    });
 })();
